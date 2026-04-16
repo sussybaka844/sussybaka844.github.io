@@ -263,17 +263,14 @@ quizBox.innerHTML = `
 `;
 }
 
-function jumpToQuestion(){
+document.getElementById("jumpBtn").onclick = function () {
+    let num = parseInt(document.getElementById("jumpInput").value);
 
-let num = parseInt(document.getElementById("jumpInput").value);
-
-if(isNaN(num)) return;
-
-if(num >= 1 && num <= quizData.length){
-    current = num - 1;
-    loadQuestion();
-}
-}
+    if (!isNaN(num) && num >= 1 && num <= quizData.length) {
+        current = num - 1;
+        loadQuestion();
+    }
+};
 
 loadQuestion();
 
