@@ -244,7 +244,7 @@ function loadQuestion(){
 let q = shuffledQuiz[current];
 
 progress.innerHTML = `السؤال ${current+1} من ${shuffledQuiz.length}`;
-question.innerHTML = q.question;
+question.innerHTML = q.question.replace(/^\d+\-\s*/, "");
 answers.innerHTML = "";
 
 q.options.forEach((opt,index)=>{
