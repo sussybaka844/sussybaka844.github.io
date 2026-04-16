@@ -63,7 +63,11 @@ h1{
 <div class="container">
 <div class="box" id="quizBox">
 <h1>اختبار التاريخ</h1>
-<div style="display:flex;gap:10px;justify-content:center;align-items:center;margin-bottom:15px;flex-wrap:wrap;">
+<div id="progress"></div>
+<div id="question"></div>
+<div id="answers"></div>
+</div>
+<div style="margin-top:20px;text-align:center;">
 
 <input id="jumpInput" type="number" min="1" max="80" placeholder="رقم السؤال"
 style="
@@ -72,7 +76,19 @@ width:130px;
 font-size:16px;
 border:none;
 border-radius:8px;
-outline:none;
+margin-left:8px;
+">
+
+<div style="margin-top:20px;text-align:center;">
+
+<input id="jumpInput" type="number" min="1" max="80" placeholder="رقم السؤال"
+style="
+padding:10px;
+width:130px;
+font-size:16px;
+border:none;
+border-radius:8px;
+margin-left:8px;
 ">
 
 <button id="jumpBtn"
@@ -87,10 +103,19 @@ cursor:pointer;
 ">
 اذهب
 </button>
-<div id="progress"></div>
-<div id="question"></div>
-<div id="answers"></div>
-<button id="nextBtn">التالي</button>
+
+</div>
+
+<script>
+document.getElementById("jumpBtn").onclick = function () {
+    let num = parseInt(document.getElementById("jumpInput").value);
+
+    if (!isNaN(num) && num >= 1 && num <= quizData.length) {
+        current = num - 1;
+        loadQuestion();
+    }
+};
+</script>
 </div>
 </div>
 
@@ -262,15 +287,6 @@ quizBox.innerHTML = `
 </div>
 `;
 }
-
-document.getElementById("jumpBtn").onclick = function () {
-    let num = parseInt(document.getElementById("jumpInput").value);
-
-    if (!isNaN(num) && num >= 1 && num <= quizData.length) {
-        current = num - 1;
-        loadQuestion();
-    }
-};
 
 loadQuestion();
 
