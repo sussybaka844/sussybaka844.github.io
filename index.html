@@ -27,6 +27,15 @@ body{
 h1{
     text-align:center;
 }
+<div style="margin-bottom:15px;">
+<input id="jumpInput" type="number" min="1" max="80" placeholder="رقم السؤال"
+style="padding:10px;width:120px;border:none;border-radius:8px;font-size:16px;">
+
+<button onclick="jumpToQuestion()"
+style="padding:10px 15px;border:none;border-radius:8px;background:#ff9800;color:white;cursor:pointer;">
+اذهب
+</button>
+</div>
 #progress{
     margin-bottom:15px;
     color:#aaa;
@@ -236,6 +245,18 @@ quizBox.innerHTML = `
 <button onclick="location.reload()" id="nextBtn" style="display:inline-block">إعادة اللعب</button>
 </div>
 `;
+}
+
+function jumpToQuestion(){
+
+let num = parseInt(document.getElementById("jumpInput").value);
+
+if(isNaN(num)) return;
+
+if(num >= 1 && num <= quizData.length){
+    current = num - 1;
+    loadQuestion();
+}
 }
 
 loadQuestion();
