@@ -255,9 +255,9 @@ if(index === correct){
     buttons[correct].classList.add("correct");
 
     wrongQuestions.push({
-        question: shuffledQuiz[current].question,
-        correctAnswer: shuffledQuiz[current].options[correct],
-        yourAnswer: shuffledQuiz[current].options[index]
+        question: quizData[current].question,
+        correctAnswer: quizData[current].options[correct],
+        yourAnswer: quizData[current].options[index]
     });
 
     delay = 2000;
@@ -279,7 +279,7 @@ if(current < quizData.length){
 
 function showResult(){
 
-let percent = Math.round((score / shuffledQuiz.length) * 100);
+let percent = Math.round((score / quizData.length) * 100);
 
 let mistakesHTML = "";
 
